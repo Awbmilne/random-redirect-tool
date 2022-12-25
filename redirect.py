@@ -12,12 +12,12 @@ def page_not_found(error):
 def index():
     abort(404)
 
-@app.route('/redirect/<string:list>')
+@app.route('/<string:list>')
 def find_redirect(list):
     if f"{list}.lst" not in os.listdir("url-lists"):
         abort(404)
     with open(f"url-lists/{list}.lst", 'r') as f:
-        urls = [url[:-1] for url in f.readlines()]
+        urls = [url.strip() for url in f.readlines()]
         return redirect(random.choice(urls), code=307)
 
 if __name__ == '__main__':
