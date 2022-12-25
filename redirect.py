@@ -14,9 +14,9 @@ def index():
 
 @app.route('/<string:list>')
 def find_redirect(list):
-    if f"{list}.lst" not in os.listdir("url-lists"):
+    if f"{list}.list" not in os.listdir("url-lists"):
         abort(404)
-    with open(f"url-lists/{list}.lst", 'r') as f:
+    with open(f"url-lists/{list}.list", 'r') as f:
         urls = [url.strip() for url in f.readlines()]
         return redirect(random.choice(urls), code=307)
 
