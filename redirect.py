@@ -21,6 +21,6 @@ def find_redirect(list):
         return redirect(random.choice(urls), code=307)
 
 if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
+    # Bind to PORT if defined, otherwise default to 80
     port = int(os.environ.get('PORT', 80))
     app.run(host='0.0.0.0', port=port)
